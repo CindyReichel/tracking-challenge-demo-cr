@@ -1,0 +1,57 @@
+name: tracking-challenge-demo-cr
+display_name: Tracking Challenge Demo Cr
+# use 'hidden' to remove plugin from napari hub search results
+visibility: public
+# see https://napari.org/stable/plugins/technical_references/manifest.html#fields for valid categories
+categories: ["Annotation", "Segmentation", "Acquisition"]
+contributions:
+  commands:
+    - id: tracking-challenge-demo-cr.get_reader
+      python_name: tracking_challenge_demo_cr._reader:napari_get_reader
+      title: Open data with Tracking Challenge Demo Cr
+    - id: tracking-challenge-demo-cr.write_multiple
+      python_name: tracking_challenge_demo_cr._writer:write_multiple
+      title: Save multi-layer data with Tracking Challenge Demo Cr
+    - id: tracking-challenge-demo-cr.write_single_image
+      python_name: tracking_challenge_demo_cr._writer:write_single_image
+      title: Save image data with Tracking Challenge Demo Cr
+    - id: tracking-challenge-demo-cr.make_sample_data
+      python_name: tracking_challenge_demo_cr._sample_data:make_sample_data
+      title: Load sample data from Tracking Challenge Demo Cr
+    - id: tracking-challenge-demo-cr.make_container_widget
+      python_name: tracking_challenge_demo_cr:ImageThreshold
+      title: Make threshold Container widget
+    - id: tracking-challenge-demo-cr.make_magic_widget
+      python_name: tracking_challenge_demo_cr:threshold_magic_widget
+      title: Make threshold magic widget
+    - id: tracking-challenge-demo-cr.make_function_widget
+      python_name: tracking_challenge_demo_cr:threshold_autogenerate_widget
+      title: Make threshold function widget
+    - id: tracking-challenge-demo-cr.make_qwidget
+      python_name: tracking_challenge_demo_cr:ExampleQWidget
+      title: Make example QWidget
+  readers:
+    - command: tracking-challenge-demo-cr.get_reader
+      accepts_directories: false
+      filename_patterns: ['*.npy']
+  writers:
+    - command: tracking-challenge-demo-cr.write_multiple
+      layer_types: ['image*','labels*']
+      filename_extensions: []
+    - command: tracking-challenge-demo-cr.write_single_image
+      layer_types: ['image']
+      filename_extensions: ['.npy']
+  sample_data:
+    - command: tracking-challenge-demo-cr.make_sample_data
+      display_name: Tracking Challenge Demo Cr
+      key: unique_id.1
+  widgets:
+    - command: tracking-challenge-demo-cr.make_container_widget
+      display_name: Container Threshold
+    - command: tracking-challenge-demo-cr.make_magic_widget
+      display_name: Magic Threshold
+    - command: tracking-challenge-demo-cr.make_function_widget
+      autogenerate: true
+      display_name: Autogenerate Threshold
+    - command: tracking-challenge-demo-cr.make_qwidget
+      display_name: Example QWidget
